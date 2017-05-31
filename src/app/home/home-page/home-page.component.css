@@ -1,0 +1,28 @@
+.pat-jumbotron {
+    background: rgba(128, 128, 128, 0.2);
+    margin: 15% 0 0 0;
+    color: yellow;
+    text-shadow: 2px 2px 2px black;
+    z-index: 9;
+}
+
+.pat-jumbotron2 {
+    background-color: black;
+    margin: 15% 0 0 0;
+    color: lightsalmon;
+    z-index: 10;
+}
+
+#pat-bg-video {
+    top: 55px;
+    left: 0px;
+    position: fixed;
+    background-size: cover;
+    width: 100%;
+    z-index: -2;
+}
+
+.pat-display {
+    position: static;
+    height: 100%;
+}
