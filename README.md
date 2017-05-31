@@ -4,11 +4,11 @@
 
 # Implemented with 
 
-Angular 2 (4.1.1)
-  ( angularfire2, ng2-file-upload, ngx-mydatepicker, @ng-bootstrap/ng-bootstrap ...)
-  TypeScript, JavaScript
-Boostrap 4, HTML 5, CSS
-Tools : Node, npm, Angular CLI, Visual Studio Code, GIT
+- Angular 2 (4.1.1)<br>
+    angularfire2, ng2-file-upload, ngx-mydatepicker, @ng-bootstrap/ng-bootstrap ...<br>
+    TypeScript, JavaScript<br>
+- Boostrap 4, HTML 5, CSS3<br>
+- Tools : Node, npm, Angular CLI, Visual Studio Code, GIT
 
 # This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
@@ -36,3 +36,8 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+License
+----
+
+MIT
