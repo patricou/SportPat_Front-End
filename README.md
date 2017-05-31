@@ -1,4 +1,5 @@
-# SportPat Web Application to Organize Srorts Events. ( Front-End part).
+## SPORTS ORGANIZER Web Application ( Front-End part).
+This Web Application allows to everybody to create sportives events.
 
 <a href="https://182-193-28-81.ftth.cust.kwaoo.net:8000/">Test here. </a>
 
