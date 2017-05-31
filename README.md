@@ -5,8 +5,8 @@
 # Implemented with 
 
 - Angular 2 (4.1.1)<br>
-    angularfire2, ng2-file-upload, ngx-mydatepicker, @ng-bootstrap/ng-bootstrap ...<br>
-    TypeScript, JavaScript<br>
+    - angularfire2, ng2-file-upload, ngx-mydatepicker, @ng-bootstrap/ng-bootstrap ...<br>
+    - TypeScript, JavaScript<br>
 - Boostrap 4, HTML 5, CSS3<br>
 - Tools : Node, npm, Angular CLI, Visual Studio Code, GIT
 
