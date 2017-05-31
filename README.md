@@ -2,7 +2,15 @@
 
 <a href="https://182-193-28-81.ftth.cust.kwaoo.net:8000/">Test here. </a>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+# Implemented with 
+
+Angular 2 (4.1.1)
+  ( angularfire2, ng2-file-upload, ngx-mydatepicker, @ng-bootstrap/ng-bootstrap ...)
+  TypeScript, JavaScript
+Boostrap 4, HTML 5, CSS
+Tools : Node, npm, Angular CLI, Visual Studio Code, GIT
+
+# This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
 ## Development server
 
