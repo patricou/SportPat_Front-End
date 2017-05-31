@@ -1,4 +1,4 @@
-# SportBack Web Application to Organize SPorts Event. ( Front-End part).
+# SportPat Web Application to Organize SPorts Event. ( Front-End part).
 
 <a href="https://182-193-28-81.ftth.cust.kwaoo.net:8000/">Test here. </a>
 
