@@ -11,11 +11,12 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HomeEvenementsComponent } from './home-evenements/home-evenements.component';
-import { EvenementsService } from './evenements.service';
+import { EvenementsService } from '../services/evenements.service';
 import { CreateEvenementComponent } from './create-evenement/create-evenement.component';
 import { ElementEvenementComponent } from './element-evenement/element-evenement.component';
 import { UpdateEvenementComponent } from './update-evenement/update-evenement.component';
-import { WindowRefService } from '../window/window-ref.service';
+import { WindowRefService } from '../services/window-ref.service';
+import { CommonvaluesService } from '../services/commonvalues.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
@@ -47,7 +48,8 @@ export function HttpLoaderFactory(http: Http) {
 	],
 	providers: [
 		EvenementsService,
-		WindowRefService
+		WindowRefService,
+		CommonvaluesService
 	]
 })
 export class EvenementsModule { }

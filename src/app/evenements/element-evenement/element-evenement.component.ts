@@ -11,8 +11,8 @@ import { UploadedFile } from '../../model/uploadedfile';
 import { Member } from '../../model/member';
 import { Evenement } from '../../model/evenement';
 import { environment } from '../../../environments/environment';
-import { FileService } from '../../file/file.service';
-import { WindowRefService } from '../../window/window-ref.service';
+import { WindowRefService } from '../../services/window-ref.service';
+import { FileService } from '../../services/file.service';
 
 @Component({
 	selector: 'element-evenement',

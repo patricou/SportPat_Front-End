@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { IMyOptions, IMyDateModel } from 'ngx-mydatepicker';
 import { Member } from '../../model/member';
 import { Evenement } from '../../model/evenement';
-import { EvenementsService } from '../evenements.service';
-import { MembersService } from '../../members/members.service';
+import { MembersService } from '../../services/members.service';
+import { EvenementsService } from '../../services/evenements.service';
 
 @Component({
 	selector: 'app-create-evenement',

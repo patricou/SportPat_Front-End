@@ -1,5 +1,4 @@
 import { Component, OnInit, HostListener, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
-import { EvenementsService } from '../evenements.service';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -10,13 +9,15 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/do';
 
 import { Evenement } from '../../model/evenement';
-import { MembersService } from '../../members/members.service';
+import { MembersService } from '../../services/members.service';
 import { Member } from '../../model/member';
 import { Router } from '@angular/router';
-import { WindowRefService } from '../../window/window-ref.service';
-import { FileService } from '../../file/file.service';
+import { WindowRefService } from '../../services/window-ref.service';
+import { FileService } from '../../services/file.service';
 import { Headers } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonvaluesService } from '../../services/commonvalues.service';
+import { EvenementsService } from '../../services/evenements.service';
 
 export enum KEY_CODE {
 	RIGHT_ARROW = 39,
@@ -34,21 +35,22 @@ export class HomeEvenementsComponent implements OnInit, AfterViewInit {
 	private user: Member;
 	private totalElements: number;
 	private totalPages: number;
-	private pageNumber: number = 0;
-	private elementsByPage: number = 3;
+	private pageNumber: number = this._commonValuesService.getPageNumber();
+	private elementsByPage: number = this._commonValuesService.getElementsByPage();
+	private dataFIlter: string = this._commonValuesService.getDataFilter();
 	private pages: number[];
 	@ViewChild('searchterm')
 	private searchterm: ElementRef;
-	private dataFIlter: string = "";
 
 	constructor(private _evenementsService: EvenementsService,
 		private _memberService: MembersService,
 		private _fileService: FileService,
-		private _router: Router) {
+		private _router: Router,
+		private _commonValuesService: CommonvaluesService) {
 	}
 
 	ngOnInit() {
-		this.getEvents("");
+		this.getEvents(this.dataFIlter);
 		this.user = this._memberService.getUser();
 	}
 
@@ -62,7 +64,9 @@ export class HomeEvenementsComponent implements OnInit, AfterViewInit {
 		eventObservable.subscribe(
 			((data: any) => {
 				this.pageNumber = 0;
+				this._commonValuesService.setPageNumber(this.pageNumber);
 				this.dataFIlter = data.target.value;
+				this._commonValuesService.setDataFilter(this.dataFIlter);
 				this.getEvents(this.dataFIlter);
 			}),
 			((err: any) => console.error(err)),
@@ -82,6 +86,7 @@ export class HomeEvenementsComponent implements OnInit, AfterViewInit {
 				this.totalElements = res.totalElements;
 				this.totalPages = res.totalPages;
 				this.pageNumber = res.number;
+				this._commonValuesService.setPageNumber(this.pageNumber);
 				this.pages = Array.from(Array(this.totalPages), (x, i) => i);
 			},
 			err => alert("Error when getting Events " + err)
@@ -143,17 +148,21 @@ export class HomeEvenementsComponent implements OnInit, AfterViewInit {
 	private changePreviousPage() {
 		if (this.pageNumber > 0) {
 			this.pageNumber = this.pageNumber - 1;
+			this._commonValuesService.setPageNumber(this.pageNumber);
 			this.getEvents(this.dataFIlter);
 		}
 	}
 	private changeNextPage() {
 		if (this.pageNumber < this.totalPages - 1) {
 			this.pageNumber = this.pageNumber + 1;
+			this._commonValuesService.setPageNumber(this.pageNumber);
 			this.getEvents(this.dataFIlter);
 		}
 	}
 	private changeFiltre() {
 		this.pageNumber = 0;
+		this._commonValuesService.setPageNumber(this.pageNumber);
+		this._commonValuesService.setElementsByPage(this.elementsByPage);
 		this.getEvents(this.dataFIlter);
 	}
 	private clearFilter() {

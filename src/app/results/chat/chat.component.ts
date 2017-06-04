@@ -3,14 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import { Member } from '../../model/member';
-import { MembersService } from '../../members/members.service';
+import { MembersService } from '../../services/members.service';
 
 @Component({
-  selector: 'app-home-results',
-  templateUrl: './home-results.component.html',
-  styleUrls: ['./home-results.component.css']
+  selector: 'app-chat',
+  templateUrl: './chat.component.html',
+  styleUrls: ['./chat.component.css']
 })
-export class HomeResultsComponent implements OnInit {
+export class ChatComponent implements OnInit {
 
   private items: FirebaseListObservable<any[]>;
   private msgVal: string = '';

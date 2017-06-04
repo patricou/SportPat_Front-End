@@ -13,39 +13,28 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { HomeModule } from "./home/home.module";
 import { EvenementsModule } from './evenements/evenements.module';
-import { ResultsModule } from './results/results.module';
+import { ChatModule } from './results/chat.module';
 import { MapsModule } from './maps/maps.module';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { HomeEvenementsComponent } from './evenements/home-evenements/home-evenements.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { HomeResultsComponent } from './results/home-results/home-results.component';
+import { ChatComponent } from './results/chat/chat.component';
 import { HomeMapsComponent } from './maps/home-maps/home-maps.component';
 import { CreateEvenementComponent } from './evenements/create-evenement/create-evenement.component';
 import { UpdateEvenementComponent } from './evenements/update-evenement/update-evenement.component';
 import { KeycloakService } from './keycloak/keycloak.service';
 import { KeycloakHttp } from './keycloak/keycloak.http';
-import { MembersService } from './members/members.service';
-import { FileService } from './file/file.service';
+import { MembersService } from './services/members.service';
+import { CommonvaluesService } from './services/commonvalues.service';
+import { FileService } from './services/file.service';
+import { environment } from '../environments/environment';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
 	return new TranslateHttpLoader(http);
 }
-
-// firebase config
-export const environment = {
-	production: false,
-	firebase: {
-		apiKey: "AIzaSyBJFAKMyDO_lmqBYUwW6CWjBIMTHyFGZKc",
-		authDomain: "sportpat-5e155.firebaseapp.com",
-		databaseURL: "https://sportpat-5e155.firebaseio.com",
-		projectId: "sportpat-5e155",
-		storageBucket: "sportpat-5e155.appspot.com",
-		messagingSenderId: "193416492629"
-	}
-};
 
 @NgModule({
 	declarations: [
@@ -58,7 +47,7 @@ export const environment = {
 		HttpModule,
 		HomeModule,
 		EvenementsModule,
-		ResultsModule,
+		ChatModule,
 		MapsModule,
 		TranslateModule.forRoot({
 			loader: {
@@ -72,7 +61,7 @@ export const environment = {
 			{ path: 'even', component: HomeEvenementsComponent },
 			{ path: 'neweven', component: CreateEvenementComponent },
 			{ path: 'updeven/:id', component: UpdateEvenementComponent },
-			{ path: 'results', component: HomeResultsComponent },
+			{ path: 'results', component: ChatComponent },
 			{ path: 'maps', component: HomeMapsComponent },
 			{ path: 'home', redirectTo: '', pathMatch: 'full' },
 			{ path: '**', component: PageNotFoundComponent }
@@ -87,7 +76,8 @@ export const environment = {
 		KeycloakService,
 		KeycloakHttp,
 		MembersService,
-		FileService
+		FileService,
+		CommonvaluesService
 	],
 	bootstrap: [AppComponent]
 })

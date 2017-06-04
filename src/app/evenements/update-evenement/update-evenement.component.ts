@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Evenement } from '../../model/evenement';
-import { EvenementsService } from '../evenements.service';
+import { EvenementsService } from '../../services/evenements.service';
 
 import { IMyOptions } from 'ngx-mydatepicker';
 import { Member } from '../../model/member';
