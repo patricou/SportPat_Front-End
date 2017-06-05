@@ -3,10 +3,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home-maps',
-  templateUrl: './home-maps.component.html',
-  styleUrls: ['./home-maps.component.css']
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.css']
 })
-export class HomeMapsComponent implements OnInit {
+export class AboutComponent implements OnInit {
 
   ngOnInit() {
 

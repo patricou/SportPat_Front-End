@@ -13,15 +13,15 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { HomeModule } from "./home/home.module";
 import { EvenementsModule } from './evenements/evenements.module';
-import { ChatModule } from './results/chat.module';
-import { MapsModule } from './maps/maps.module';
+import { ChatModule } from './communications/communications.module';
+import { MapsModule } from './other/other.module';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { HomeEvenementsComponent } from './evenements/home-evenements/home-evenements.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ChatComponent } from './results/chat/chat.component';
-import { HomeMapsComponent } from './maps/home-maps/home-maps.component';
+import { ChatComponent } from './communications/chat/chat.component';
+import { AboutComponent } from './other/about/about.component';
 import { CreateEvenementComponent } from './evenements/create-evenement/create-evenement.component';
 import { UpdateEvenementComponent } from './evenements/update-evenement/update-evenement.component';
 import { KeycloakService } from './keycloak/keycloak.service';
@@ -62,7 +62,7 @@ export function HttpLoaderFactory(http: Http) {
 			{ path: 'neweven', component: CreateEvenementComponent },
 			{ path: 'updeven/:id', component: UpdateEvenementComponent },
 			{ path: 'results', component: ChatComponent },
-			{ path: 'maps', component: HomeMapsComponent },
+			{ path: 'maps', component: AboutComponent },
 			{ path: 'home', redirectTo: '', pathMatch: 'full' },
 			{ path: '**', component: PageNotFoundComponent }
 		]),

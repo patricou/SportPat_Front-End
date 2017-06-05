@@ -145,5 +145,14 @@
         "DATA": "Donnée",
         "SECURITY": "Sécurité",
         "REF": "Imaginé, Designé et implementé par"
+    },
+    "USERINFO": {
+        "TITLE": "Vos Informations",
+        "ID": "Id",
+        "EMAIL": "Adresse mail",
+        "FIRSTNAME": "Prénom",
+        "LASTNAME": "Nom",
+        "USERNAME": "Surnom",
+        "KEYCLOAKID": "KeycloakId"
     }
 }

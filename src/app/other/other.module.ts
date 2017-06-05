@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeMapsComponent } from './home-maps/home-maps.component';
+import { AboutComponent } from './about/about.component';
 import { Http } from '@angular/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -23,6 +23,6 @@ export function HttpLoaderFactory(http: Http) {
     }),
     NgbModule.forRoot()
   ],
-  declarations: [HomeMapsComponent]
+  declarations: [AboutComponent]
 })
 export class MapsModule { }

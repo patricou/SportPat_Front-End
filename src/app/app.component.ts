@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { KeycloakService } from './keycloak/keycloak.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Member } from './model/member';
 import { MembersService } from './services/members.service';
 import { CommonvaluesService } from './services/commonvalues.service';
 import { environment } from '../environments/environment';
+
 
 @Component({
     selector: 'app-root',
@@ -18,7 +20,8 @@ export class AppComponent implements OnInit {
     constructor(private _translate: TranslateService,
         private _kc: KeycloakService,
         private _membersService: MembersService,
-        private _commonValuesServices: CommonvaluesService) {
+        private _commonValuesServices: CommonvaluesService,
+        private modalService: NgbModal, ) {
     }
 
     ngOnInit() {
@@ -58,5 +61,25 @@ export class AppComponent implements OnInit {
         },
             err => alert("Error when retieving MLB user id")
         );
+    }
+    // for modal chat
+    private closeResult: string;
+
+    private open(content) {
+        this.modalService.open(content).result.then((result) => {
+            this.closeResult = `Closed with: ${result}`;
+        }, (reason) => {
+            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });
+    }
+
+    private getDismissReason(reason: any): string {
+        if (reason === ModalDismissReasons.ESC) {
+            return 'by pressing ESC';
+        } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        } else {
+            return `with: ${reason}`;
+        }
     }
 }
