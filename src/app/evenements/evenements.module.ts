@@ -44,7 +44,7 @@ export function HttpLoaderFactory(http: Http) {
 	declarations: [
 		HomeEvenementsComponent, CreateEvenementComponent, ElementEvenementComponent, UpdateEvenementComponent
 	],
-	exports: [HomeEvenementsComponent
+	exports: [HomeEvenementsComponent, CreateEvenementComponent, ElementEvenementComponent, UpdateEvenementComponent
 	],
 	providers: [
 		EvenementsService,
