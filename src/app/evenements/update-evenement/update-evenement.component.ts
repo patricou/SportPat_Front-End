@@ -13,7 +13,7 @@ import { Member } from '../../model/member';
 })
 export class UpdateEvenementComponent implements OnInit {
 
-	private evenement: Evenement = new Evenement(null, new Date(), "", new Date(), new Date(), new Date(), "Nouvel Evenement !!", "", "", [], new Date(), "", "", [], "", "", "", "", 0, 0);;
+	private evenement: Evenement = new Evenement(null, new Date(), "", new Date(), new Date(), new Date(), "Nouvel Evenement !!", "", "", "", [], new Date(), "", "", [], "", "", "", "", 0, 0);;
 	//private today: Date = new Date();
 	private myOptions: IMyOptions = {
 		// other options...

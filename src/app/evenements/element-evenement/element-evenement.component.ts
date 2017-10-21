@@ -31,6 +31,7 @@ export class ElementEvenementComponent implements OnInit, AfterViewInit {
 	// Evaluate rating
 	private currentRate: number = 0;
 	private safeUrlMap: SafeUrl;
+	private safePhotosUrl: SafeUrl;
 	// Native Window
 	private nativeWindow: any;
 	// Thumbnail image
@@ -81,8 +82,9 @@ export class ElementEvenementComponent implements OnInit, AfterViewInit {
 				this.currentRate = (this.evenement.ratingPlus) / rateClick * 10;
 			}
 		}
-		// sanitize the map url
+		// sanitize the map url & photoUrl
 		this.safeUrlMap = this.sanitizer.bypassSecurityTrustResourceUrl(this.evenement.map);
+		this.safePhotosUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.evenement.photosUrl);
 		// Upload files
 		this.uploader = new FileUploader({
 			url: this.API_URL4FILE + this.user.id + "/" + this.evenement.id,
@@ -141,6 +143,12 @@ export class ElementEvenementComponent implements OnInit, AfterViewInit {
 	// check if a map is available
 	private isMapAvailable(): boolean {
 		let b: boolean = !!this.evenement.map;
+		// console.log("map is available " + b);
+		return b;
+	}
+	// check if thur picture URL is available
+	private isPhotosUrlAvailable(): boolean {
+		let b: boolean = !!this.evenement.photosUrl;
 		// console.log("map is available " + b);
 		return b;
 	}

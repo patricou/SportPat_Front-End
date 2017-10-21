@@ -31,7 +31,7 @@ export class MembersService {
             const tokenObservable: Observable<string> = Observable.fromPromise(tokenPromise);
             // Get the token  ( for security ) before sending the HTTP request.
             return tokenObservable.map(token => {
-                // console.log("GetToken : " + token);
+                console.log("1|------------------> GetToken ");
                 return new Headers({
                     'Accept': 'application/json',
                     'Content-type': 'application/json',
@@ -40,12 +40,11 @@ export class MembersService {
                 })
             }).concatMap(headers => {
                 const requestOptions = new RequestOptions({ headers: headers });
+                console.log("2|------------------> Just before user POST request");
                 return this._http.post(this.API_URL + 'memb/user', JSON.stringify(this.user), requestOptions)
                     .map(res => {
+                        console.log("3|------------------> " + res);
                         return res.json()
-                    })
-                    .map(member => {
-                        return member;
                     })
             })
         } else {

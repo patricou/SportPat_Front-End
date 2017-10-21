@@ -54,6 +54,7 @@ export class EvenementsService {
 					evenement.evenementName,
 					evenement.id,
 					evenement.map,
+					evenement.photosUrl,
 					evenement.members,
 					evenement.openInscriptionDate,
 					evenement.status,

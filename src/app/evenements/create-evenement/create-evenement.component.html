@@ -122,7 +122,15 @@
                 <label class="col-md-4 col-form-label" for="map">{{ "EVENTCREATION.MAPURL" | translate }}</label>
                 <div class="col-md-6">
                     <input id="map" #mapV="ngModel" [(ngModel)]="evenement.map" name="map" placeholder="{{ 'EVENTCREATION.MAPURLPLHD' | translate }}" class="form-control input-md">
-                    <small class="text-danger" [hidden]="!mapV.invalid || !f.submitted" type="danger"> {{ "EVENTCREATION.MAPURLERR" | translate }} <a href="https://www.geoportail.gouv.fr/carte"><i class="fa fa-map" aria-hidden="true"></i> </a> </small>
+                    <small class="text-danger" [hidden]="!mapV.invalid || !f.submitted" type="danger"> {{ "EVENTCREATION.MAPURLERR" | translate }} <a href="https://www.geoportail.gouv.fr/carte"><i class="fa fa-map" aria-hidden="true"></i></a></small>
+                </div>
+            </div>
+            <!-- Text input-->
+            <div class="form-group row" [class.has-danger]="photosUrlV.invalid && f.submitted">
+                <label class="col-md-4 col-form-label" for="photosUrl">{{ "EVENTCREATION.PHOTOSURL" | translate }}</label>
+                <div class="col-md-6">
+                    <input id="photosUrl" #photosUrlV="ngModel" [(ngModel)]="evenement.photosUrl" name="photosUrl" placeholder="{{ 'EVENTCREATION.PHOTOSURLPLHD' | translate }}" class="form-control input-md">
+                    <small class="text-danger" [hidden]="!photosUrlV.invalid || !f.submitted" type="danger"> {{ "EVENTCREATION.PHOTOSURLERR" | translate }} <i class="fa fa-picture-o" aria-hidden="true"></i></small>
                 </div>
             </div>
 

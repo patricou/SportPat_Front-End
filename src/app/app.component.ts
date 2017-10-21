@@ -7,7 +7,6 @@ import { MembersService } from './services/members.service';
 import { CommonvaluesService } from './services/commonvalues.service';
 import { environment } from '../environments/environment';
 
-
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
