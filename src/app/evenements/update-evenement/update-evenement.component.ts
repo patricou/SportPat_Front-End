@@ -13,9 +13,9 @@ import { Member } from '../../model/member';
 })
 export class UpdateEvenementComponent implements OnInit {
 
-	private evenement: Evenement = new Evenement(null, new Date(), "", new Date(), new Date(), new Date(), "Nouvel Evenement !!", "", "", "", [], new Date(), "", "", [], "", "", "", "", 0, 0);;
+	public evenement: Evenement = new Evenement(null, new Date(), "", new Date(), new Date(), new Date(), "Nouvel Evenement !!", "", "", "", [], new Date(), "", "", [], "", "", "", "", 0, 0);;
 	//private today: Date = new Date();
-	private myOptions: IMyOptions = {
+	public myOptions: IMyOptions = {
 		// other options...
 		dateFormat: 'dd mmm yyyy',
 		alignSelectorRight: false,
@@ -28,14 +28,14 @@ export class UpdateEvenementComponent implements OnInit {
 		showWeekNumbers: true
 	};
 	// Initialized to specific date to run with ngx-mydatepicker
-	private author: string;
-	private beginEventDate: Object;
-	private endEventDate: Object;
-	private openInscriptionDate: Object;
-	private closeInscriptionDate: Object;
+	public author: string;
+	public beginEventDate: Object;
+	public endEventDate: Object;
+	public openInscriptionDate: Object;
+	public closeInscriptionDate: Object;
 	// change color for select placeholder 
-	private typeColor: string = "rgb(70,74,76)";
-	private diffColor: string = "rgb(70,74,76)";
+	public typeColor: string = "rgb(70,74,76)";
+	public diffColor: string = "rgb(70,74,76)";
 
 	constructor(private _route: ActivatedRoute,
 		private _evenementsService: EvenementsService,

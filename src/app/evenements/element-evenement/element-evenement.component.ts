@@ -23,19 +23,19 @@ import { FileService } from '../../services/file.service';
 export class ElementEvenementComponent implements OnInit, AfterViewInit {
 
 	public uploader: FileUploader;
-	private API_URL: string = environment.API_URL;
-	private API_URL4FILE: string = environment.API_URL4FILE;
+	public API_URL: string = environment.API_URL;
+	public API_URL4FILE: string = environment.API_URL4FILE;
 	// For firebase items
-	private items: FirebaseListObservable<any[]>;
-	private msgVal: string = '';
+	public items: FirebaseListObservable<any[]>;
+	public msgVal: string = '';
 	// Evaluate rating
-	private currentRate: number = 0;
-	private safeUrlMap: SafeUrl;
-	private safePhotosUrl: SafeUrl;
+	public currentRate: number = 0;
+	public safeUrlMap: SafeUrl;
+	public safePhotosUrl: SafeUrl;
 	// Native Window
-	private nativeWindow: any;
+	public nativeWindow: any;
 	// Thumbnail image
-	private thumbnailUrl: any = "assets/images/images.jpg";
+	public thumbnailUrl: any = "assets/images/images.jpg";
 
 	@Input()
 	evenement: Evenement;
@@ -109,7 +109,7 @@ export class ElementEvenementComponent implements OnInit, AfterViewInit {
 		this.setThumbnailImage();
 	}
 	// Set image thumbnail
-	private setThumbnailImage() {
+	public setThumbnailImage() {
 		if (this.evenement.fileUploadeds.length != 0) {
 			this.evenement.fileUploadeds.map(fileUploaded => {
 				if (fileUploaded.fileName.indexOf('thumbnail') !== -1) {
@@ -141,33 +141,33 @@ export class ElementEvenementComponent implements OnInit, AfterViewInit {
 		}
 	}
 	// check if a map is available
-	private isMapAvailable(): boolean {
+	public isMapAvailable(): boolean {
 		let b: boolean = !!this.evenement.map;
 		// console.log("map is available " + b);
 		return b;
 	}
 	// check if thur picture URL is available
-	private isPhotosUrlAvailable(): boolean {
+	public isPhotosUrlAvailable(): boolean {
 		let b: boolean = !!this.evenement.photosUrl;
 		// console.log("map is available " + b);
 		return b;
 	}
 	// call the modal window for del confirmation
-	private deleteEvenement() {
+	public deleteEvenement() {
 		if (confirm("Are you sure you want to delete the event ? ")) {
 			this.delEvenement.emit(this.evenement);
 		}
 	}
 	// add the user as member
-	private addMemberClick() {
+	public addMemberClick() {
 		this.addMember.emit(this.evenement);
 	};
 	// del the user as member
-	private delMemberClick() {
+	public delMemberClick() {
 		this.delMember.emit(this.evenement);
 	};
 	// Change Status
-	private changeStatusEvent(status: string) {
+	public changeStatusEvent(status: string) {
 		if (status == "Closed") {
 			this.evenement.status = "Cancel"
 		} else
@@ -180,39 +180,38 @@ export class ElementEvenementComponent implements OnInit, AfterViewInit {
 		this.updateEvenement.emit(this.evenement);
 	};
 
-	private isAuthor(): boolean {
+	public isAuthor(): boolean {
 		// i don't search by Id becoze sometimes the page can be diaplyed after the id is filled 
 		// as it is completed by the id becoming from Mlab with an observable in membersService.completeMemberId()
 		return this.evenement.author.userName == this.user.userName;
 	}
 
-	private isParticipant(): boolean {
+	public isParticipant(): boolean {
 		let b: boolean = false;
 		this.evenement.members.forEach(member => {
-			if (member.userName == this.user.userName)
-			{ b = true };
+			if (member.userName == this.user.userName) { b = true };
 		}
 		);
 		return b;
 	}
 
-	private isAnyParticpants(): boolean {
+	public isAnyParticpants(): boolean {
 		return this.evenement.members.length > 0;
 	}
 
-	private isAnyFiles(): boolean {
+	public isAnyFiles(): boolean {
 		return this.evenement.fileUploadeds.length > 0;
 	}
 
-	private isFileOwner(member: Member): boolean {
+	public isFileOwner(member: Member): boolean {
 		let b: boolean = false;
 		b = this.user.id == member.id
 		return b;
 	}
 	// for modal chat
-	private closeResult: string;
+	public closeResult: string;
 
-	private open(content) {
+	public open(content) {
 		this.modalService.open(content).result.then((result) => {
 			this.closeResult = `Closed with: ${result}`;
 		}, (reason) => {
@@ -220,7 +219,7 @@ export class ElementEvenementComponent implements OnInit, AfterViewInit {
 		});
 	}
 
-	private getDismissReason(reason: any): string {
+	public getDismissReason(reason: any): string {
 		if (reason === ModalDismissReasons.ESC) {
 			return 'by pressing ESC';
 		} else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -230,7 +229,7 @@ export class ElementEvenementComponent implements OnInit, AfterViewInit {
 		}
 	}
 	// Live Chat functions ( with Firebase ) 
-	private Send(desc: string) {
+	public Send(desc: string) {
 		this.items.push({
 			'message': desc,
 			'date': firebase.database.ServerValue.TIMESTAMP,
@@ -243,27 +242,27 @@ export class ElementEvenementComponent implements OnInit, AfterViewInit {
 		});
 		this.msgVal = '';
 	}
-	private deleteMessage(item) {
+	public deleteMessage(item) {
 		this.items.remove(item.$key);
 	}
 	// for file list toogle
-	private tfl: boolean = true;
-	private toogleFileListe() {
+	public tfl: boolean = true;
+	public toogleFileListe() {
 		this.tfl = !this.tfl;
 	}
 	// Rate functions
-	private addRatePlus() {
+	public addRatePlus() {
 		this.evenement.ratingPlus = this.evenement.ratingPlus + 1;
 		this.currentRate = (this.evenement.ratingPlus) / (this.evenement.ratingMinus + this.evenement.ratingPlus) * 10;
 		this.updateEvenement.emit(this.evenement);
 	};
-	private addRateMinus() {
+	public addRateMinus() {
 		this.evenement.ratingMinus = this.evenement.ratingMinus + 1;
 		this.currentRate = (this.evenement.ratingPlus) / (this.evenement.ratingMinus + this.evenement.ratingPlus) * 10;
 		this.updateEvenement.emit(this.evenement);
 	}
 	// Get the file url with the baerer token for authentifcation
-	private getFileBlobUrl(fileId: string): Observable<any> {
+	public getFileBlobUrl(fileId: string): Observable<any> {
 		return this._fileService.getFile(fileId).map(res => {
 			let ct: string = res.headers.get('Content-Type');
 			let blob = new Blob([res._body], { type: ct + ";charset=utf-8" });
@@ -271,7 +270,7 @@ export class ElementEvenementComponent implements OnInit, AfterViewInit {
 		});
 	}
 	// Open window when click on associate button
-	private openWindows(fileId: string, fileName: string) {
+	public openWindows(fileId: string, fileName: string) {
 		this.getFileBlobUrl(fileId).subscribe(blob => {
 			console.log('blob type : ' + blob.type + " // blob.size : " + blob.size);
 			//IE11 & Edge

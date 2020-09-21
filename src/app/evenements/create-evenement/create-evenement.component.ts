@@ -14,30 +14,32 @@ import { EvenementsService } from '../../services/evenements.service';
 })
 export class CreateEvenementComponent implements OnInit {
 
-	private user: Member;
+	public user: Member;
 	public evenement: Evenement;
-	//private today: Date = new Date();
-	private myOptions: IMyOptions = {
+	//public today: Date = new Date();
+	public myOptions: IMyOptions = {
 		// other options...
 		dateFormat: 'dd mmm yyyy',
 		alignSelectorRight: false,
 		markCurrentDay: true,
 		//openSelectorTopOfInput:true,
-		disableUntil: {
+		/*disableUntil: {
 			year: new Date().getFullYear(),
 			month: new Date().getMonth() + 1,
 			day: new Date().getDate() - 1
-		},
+		},*/
 		showWeekNumbers: true
 	};
 	// Initialized to specific date to run with ngx-mydatepicker
-	private author: string;
-	private beginEventDate: Object;
-	private openInscriptionDate: Object;
+	public author: string;
+	public beginEventDate: Object;
+	//public openInscriptionDate: Object;
+	public endEventDate: Object;
+	//public closeInscriptionDate: Object;
 
-	constructor(private _evenementsService: EvenementsService,
-		private _router: Router,
-		private _memberService: MembersService) {
+	constructor(public _evenementsService: EvenementsService,
+		public _router: Router,
+		public _memberService: MembersService) {
 	};
 
 	ngOnInit() {
@@ -53,18 +55,18 @@ export class CreateEvenementComponent implements OnInit {
 										month: this.evenement.beginEventDate.getMonth() + 1 ,
 										day: this.evenement.beginEventDate.getDate() } 
 									  };*/
-		this.openInscriptionDate = {
-			date: {
-				year: this.evenement.openInscriptionDate.getFullYear(),
-				month: this.evenement.openInscriptionDate.getMonth() + 1,
-				day: this.evenement.openInscriptionDate.getDate()
-			}
-		};
+		//this.openInscriptionDate = {
+		//	date: {
+		//		year: this.evenement.openInscriptionDate.getFullYear(),
+		//		month: this.evenement.openInscriptionDate.getMonth() + 1,
+		//		day: this.evenement.openInscriptionDate.getDate()
+		//	}
+		//};
 
 	};
 	// change color for select placeholder 
-	private typeColor: string = "#dcdcdc";
-	private diffColor: string = "#dcdcdc";
+	public typeColor: string = "#dcdcdc";
+	public diffColor: string = "#dcdcdc";
 	typeChange() {
 		this.typeColor = "rgb(70,74,76)";
 	}
@@ -76,8 +78,8 @@ export class CreateEvenementComponent implements OnInit {
 		// this has to be done has the input field type of ngx-mydatepicker is not date but text.
 		this.evenement.beginEventDate = new Date(fromform.beginEventDate.date.year, fromform.beginEventDate.date.month - 1, fromform.beginEventDate.date.day);
 		this.evenement.endEventDate = new Date(fromform.endEventDate.date.year, fromform.endEventDate.date.month - 1, fromform.endEventDate.date.day);
-		this.evenement.openInscriptionDate = new Date(fromform.openInscriptionDate.date.year, fromform.openInscriptionDate.date.month - 1, fromform.openInscriptionDate.date.day);
-		this.evenement.closeInscriptionDate = new Date(fromform.closeInscriptionDate.date.year, fromform.closeInscriptionDate.date.month - 1, fromform.closeInscriptionDate.date.day);
+		this.evenement.openInscriptionDate = new Date(1900, 1, 1);
+		this.evenement.closeInscriptionDate = new Date(1900, 1, 1);
 		// note  : it is perhaps bad but  fields eventname, map and comment are passed through 2 ways binding.    
 		//console.log("Result : "+ JSON.stringify(this.evenement) + " " + isValid);
 		if (this.user.id == "") { alert("Not possible to save the event as the user.id is null, please logout/login") }

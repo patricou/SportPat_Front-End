@@ -12,10 +12,10 @@
         "LOGOUT": "Logout"
     },
     "HOME": {
-        "CITATION": "“Sport will seek fear to dominate it, fatigue to triumph, difficulty to overcome it.”",
-        "AUTHOR": "Pierre De Coubertin",
-        "HOMETITLE": "Sports Organizer",
-        "HOMESUBTITLE": "To share Sports Emotion",
+        "CITATION": "“...”",
+        "AUTHOR": "Patrick DESCHAMPS",
+        "HOMETITLE": "Events Organizer",
+        "HOMESUBTITLE": "To share Emotion",
         "SECTION2TITLE": " home-page, section 2 (en).",
         "SECTION3TITLE": " home-page, section 3 (en)."
     },
@@ -81,6 +81,9 @@
         "TYPE.WALK": "Walk",
         "TYPE.SKI": "Ski",
         "TYPE.BIKE": "Bike",
+        "TYPE.PARTY": "Party",
+        "TYPE.VACATION": "Vacation",
+        "TYPE.TRAVEL": "Travel",
         "ISSUE": "Issue",
         "ISSUEDETAIL": "Issue when save the evenement :",
         "ISSUEDELDETAIL": "Issue when deleting the evenement :"

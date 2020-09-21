@@ -12,9 +12,9 @@
         "LOGOUT": "Déconnection"
     },
     "HOME": {
-        "CITATION": "“Le sport va chercher la peur pour la dominer, la fatigue pour en triompher, la difficulté pour la vaincre.”",
-        "AUTHOR": "Pierre De Coubertin",
-        "HOMETITLE": "Organisateur d'Activités Sportives",
+        "CITATION": "“...”",
+        "AUTHOR": "Patrick DESCHAMPS",
+        "HOMETITLE": "Organisateur d'Activités",
         "HOMESUBTITLE": "Pour partager vos émotions",
         "SECTION2TITLE": " home-page, section 2 (fr).",
         "SECTION3TITLE": " home-page, section 3 (fr)."
@@ -81,6 +81,9 @@
         "TYPE.WALK": "Marche",
         "TYPE.SKI": "Ski",
         "TYPE.BIKE": "Vélo",
+        "TYPE.PARTY": "Fête",
+        "TYPE.VACATION": "Vacances",
+        "TYPE.TRAVEL": "Voyage",
         "ISSUE": "Probleme",
         "ISSUEDETAIL": "Probléme en voulant enregistrer l'événement : ",
         "ISSUEDELDETAIL": "Probléme en voulant supprimer l'événement : "

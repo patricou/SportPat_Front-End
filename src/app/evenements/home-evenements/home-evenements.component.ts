@@ -31,16 +31,16 @@ export enum KEY_CODE {
 })
 export class HomeEvenementsComponent implements OnInit, AfterViewInit {
 
-	private evenements: Evenement[];
-	private user: Member;
-	private totalElements: number;
-	private totalPages: number;
-	private pageNumber: number = this._commonValuesService.getPageNumber();
-	private elementsByPage: number = this._commonValuesService.getElementsByPage();
-	private dataFIlter: string = this._commonValuesService.getDataFilter();
-	private pages: number[];
+	public evenements: Evenement[];
+	public user: Member;
+	public totalElements: number;
+	public totalPages: number;
+	public pageNumber: number = this._commonValuesService.getPageNumber();
+	public elementsByPage: number = this._commonValuesService.getElementsByPage();
+	public dataFIlter: string = this._commonValuesService.getDataFilter();
+	public pages: number[];
 	@ViewChild('searchterm')
-	private searchterm: ElementRef;
+	public searchterm: ElementRef;
 
 	constructor(private _evenementsService: EvenementsService,
 		private _memberService: MembersService,
@@ -75,7 +75,7 @@ export class HomeEvenementsComponent implements OnInit, AfterViewInit {
 
 	}
 	// Get the evenements list with pagination
-	private getEvents(data: any) {
+	public getEvents(data: any) {
 		let searchString: string = "*";
 		if (data !== "")
 			searchString = data == "" ? "*" : data;
@@ -89,12 +89,12 @@ export class HomeEvenementsComponent implements OnInit, AfterViewInit {
 				this._commonValuesService.setPageNumber(this.pageNumber);
 				this.pages = Array.from(Array(this.totalPages), (x, i) => i);
 			},
-			err => alert("Error when getting Events " + err)
+				err => alert("Error when getting Events " + err)
 			);
 
 	};
 
-	private addMemberInEvent(evenement: Evenement) {
+	public addMemberInEvent(evenement: Evenement) {
 		//console.log("addMemberInEvent " + JSON.stringify(evenement));
 		// put the user logged in the venemen as member
 		evenement.members.push(this.user);
@@ -104,7 +104,7 @@ export class HomeEvenementsComponent implements OnInit, AfterViewInit {
 				err => alert("Error when deleting participant " + err));
 	}
 
-	private delMemberInEvent(evenement: Evenement) {
+	public delMemberInEvent(evenement: Evenement) {
 		//console.log("delMemberInEvent " + JSON.stringify(evenement));
 		// put the user logged in the venemen as member    
 		let members: Member[] = evenement.members;
@@ -116,56 +116,56 @@ export class HomeEvenementsComponent implements OnInit, AfterViewInit {
 				err => alert("Error when deleting participant " + err));
 	}
 
-	private delEvent(evenement: Evenement) {
+	public delEvent(evenement: Evenement) {
 		this._evenementsService.delEvenement(evenement.id)
 			.subscribe(
-			res => {  //  update evenements for screen update			
-				this.getEvents(this.dataFIlter);
-			},
-			err => {
-				console.log("Del evenement error : " + err);
-				alert("Issue when deleting the event : " + err);
-			}
+				res => {  //  update evenements for screen update			
+					this.getEvents(this.dataFIlter);
+				},
+				err => {
+					console.log("Del evenement error : " + err);
+					alert("Issue when deleting the event : " + err);
+				}
 			);
 	}
 
-	private updEvent(evenement: Evenement) {
+	public updEvent(evenement: Evenement) {
 		this._evenementsService.putEvenement(evenement)
 			.subscribe(resp => // console.log("Update Status OK "),
 				err => alert("Update Status Error : " + err));
 	}
 
-	private updateFileUploadedInEvent(evenement: Evenement) {
+	public updateFileUploadedInEvent(evenement: Evenement) {
 		this._evenementsService.put4FileEvenement(evenement)
 			.subscribe(resp => // console.log("Delete file OK "),
 				err => alert("Delete File Error : " + err));
 	}
 	// Pagination functions
-	private changePage(page: number) {
+	public changePage(page: number) {
 		this.pageNumber = page;
 		this.getEvents(this.dataFIlter);
 	}
-	private changePreviousPage() {
+	public changePreviousPage() {
 		if (this.pageNumber > 0) {
 			this.pageNumber = this.pageNumber - 1;
 			this._commonValuesService.setPageNumber(this.pageNumber);
 			this.getEvents(this.dataFIlter);
 		}
 	}
-	private changeNextPage() {
+	public changeNextPage() {
 		if (this.pageNumber < this.totalPages - 1) {
 			this.pageNumber = this.pageNumber + 1;
 			this._commonValuesService.setPageNumber(this.pageNumber);
 			this.getEvents(this.dataFIlter);
 		}
 	}
-	private changeFiltre() {
+	public changeFiltre() {
 		this.pageNumber = 0;
 		this._commonValuesService.setPageNumber(this.pageNumber);
 		this._commonValuesService.setElementsByPage(this.elementsByPage);
 		this.getEvents(this.dataFIlter);
 	}
-	private clearFilter() {
+	public clearFilter() {
 		this.dataFIlter = "";
 		this.changeFiltre();
 	}

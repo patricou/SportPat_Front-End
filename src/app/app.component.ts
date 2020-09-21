@@ -14,13 +14,13 @@ import { environment } from '../environments/environment';
 })
 export class AppComponent implements OnInit {
 
-    private user: Member;
+    public user: Member;
 
-    constructor(private _translate: TranslateService,
-        private _kc: KeycloakService,
-        private _membersService: MembersService,
-        private _commonValuesServices: CommonvaluesService,
-        private modalService: NgbModal, ) {
+    constructor(public _translate: TranslateService,
+        public _kc: KeycloakService,
+        public _membersService: MembersService,
+        public _commonValuesServices: CommonvaluesService,
+        public modalService: NgbModal, ) {
     }
 
     ngOnInit() {
@@ -31,6 +31,7 @@ export class AppComponent implements OnInit {
         // set the lang stored in the commnValue service
         this._translate.use(this._commonValuesServices.getLang());
         // catch in all modules when lang is changed
+
         this._translate.onLangChange.subscribe((event: LangChangeEvent) => {
             this._commonValuesServices.setLang(event.lang);
             //console.log("Change language : " + event.lang + " / c.v.s. getLang : " + this._commonValuesServices.getLang());
@@ -62,9 +63,9 @@ export class AppComponent implements OnInit {
         );
     }
     // for modal chat
-    private closeResult: string;
+    public closeResult: string;
 
-    private open(content) {
+    public open(content) {
         this.modalService.open(content).result.then((result) => {
             this.closeResult = `Closed with: ${result}`;
         }, (reason) => {
@@ -72,7 +73,7 @@ export class AppComponent implements OnInit {
         });
     }
 
-    private getDismissReason(reason: any): string {
+    public getDismissReason(reason: any): string {
         if (reason === ModalDismissReasons.ESC) {
             return 'by pressing ESC';
         } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {

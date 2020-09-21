@@ -87,6 +87,7 @@
     </div>
 </div>
 <div class="text-center" [hidden]="totalPages == 0"><small>Page {{pageNumber+1}}/{{totalPages}}</small></div>
-<div class="container-fluid" [hidden]="!totalPages == 0">
+<!-- modif 2020.09.20  Operator '==' cannot be applied to types 'boolean' and '0'. -->
+<div class="container-fluid" [hidden]="!totalPages == false">
     <ngb-alert type="info">{{ "EVENTHOME.NOEVENT" | translate }}</ngb-alert>
 </div>

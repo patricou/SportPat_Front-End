@@ -3,14 +3,14 @@
         <fieldset>
             <!-- Form Name -->
             <h2>{{ "EVENTCREATION.TITLE" | translate }}</h2><br>
-            <!-- Text input
+            <!-- Text input -->
             <div class="form-group row">
                 <label class="col-md-4 col-form-label" for="authorLastName">{{ "EVENTCREATION.EVENTAUTHORNAME" | translate }}</label>
                 <div class="col-md-6">
                     <input id="authorLastName" readonly [(ngModel)]="author" name="author" type="text" class="form-control" required>
                     <small><i>user.id : {{user.id}}</i></small>
                 </div>
-            </div> -->
+            </div>
             <!-- Text input-->
             <div class="form-group row" [class.has-danger]="EvenementName.invalid && f.submitted">
                 <label class="col-md-4 col-form-label" for="EvenementName">{{ "EVENTCREATION.EVENTNAME" | translate }}</label>
@@ -19,7 +19,7 @@
                     <small class="text-danger" [hidden]="!EvenementName.invalid || !f.submitted" type="danger">{{ "EVENTCREATION.EVENTNAMEERR" | translate }}</small>
                 </div>
             </div>
-            <!-- Text input
+            <!-- Text input 
             <div class="form-group row" [class.has-danger]="EvenementName.invalid && f.submitted">
                 <label class="col-md-4 col-form-label" for="EvenementStatus">{{ "EVENTCREATION.EVENTSTATUS" | translate }}</label>
                 <div class="col-md-6">
@@ -33,6 +33,9 @@
                 <div class="col-md-6">
                     <select id="typeV" [style.color]="typeColor" #typeV="ngModel" [(ngModel)]="evenement.type" name="type" class="form-control" required (change)="typeChange()">
                         <option value="" disabled selected style="color:#dcdcdc;">{{"EVENTCREATION.EVENTTYPEPLHD" | translate }}</option>
+                        <option value="1" style="color:black">{{"EVENTCREATION.TYPE.VACATION" | translate }}</option>
+                        <option value="1" style="color:black">{{"EVENTCREATION.TYPE.TRAVEL" | translate }}</option>
+                        <option value="1" style="color:black">{{"EVENTCREATION.TYPE.PARTY" | translate }}</option>
                         <option value="1" style="color:black">{{"EVENTCREATION.TYPE.VTT" | translate }}</option>
                         <option value="2" style="color:black">{{"EVENTCREATION.TYPE.SKI" | translate }}</option>
                         <option value="3" style="color:black">{{"EVENTCREATION.TYPE.RUN" | translate }}</option>
@@ -81,8 +84,8 @@
                 <label class="col-md-4 col-form-label" for="endEventDateV">{{ "EVENTCREATION.ENDEVENTDT" | translate }}</label>
                 <div class="col-md-6">
                     <div class="input-group">
-                        <input id="endEventDateV" #endEventDateV="ngModel" [(ngModel)]="endEventDate" name="endEventDate" placeholder="{{ 'EVENTCREATION.ENDEVENTDTPLHD' | translate }}" class="form-control" required ngx-mydatepicker [options]="myOptions" #dp2="ngx-mydatepicker"
-                            (dateChanged)="onDateChanged($event)">
+                        <input type="text" id="endEventDate" #dp2="ngx-mydatepicker" ngx-mydatepicker [options]="myOptions" #endEventDateV="ngModel" [(ngModel)]="endEventDate" name="endEventDate" placeholder="{{ 'EVENTCREATION.ENDEVENTDTPLHD' | translate }}" class="form-control"
+                            required (dateChanged)="onDateChanged($event)">
                         <span class="input-group-btn">                    
                             <button type="button" class="btn btn-primary" (click)="dp2.toggleCalendar()" [class.butgrppat]="endEventDateV.invalid && f.submitted">
                                <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -134,9 +137,9 @@
                 </div>
             </div>
 
-            <!-- Text input-->
+            <!-- Text input 
             <div class="form-group row" [class.has-danger]="openInscriptionDateV.invalid && f.submitted">
-                <label class="col-md-4 col-form-label" for="Open Inscription Date">{{ "EVENTCREATION.OPENEVENTINSCRIPTDT" | translate }}</label>
+                <label class="col-md-4 col-form-label" for="OpenInscriptionDate">{{ "EVENTCREATION.OPENEVENTINSCRIPTDT" | translate }}</label>
                 <div class="col-md-6">
                     <div class="input-group">
                         <input id="OpenInscriptionDate" style="float:none" #openInscriptionDateV="ngModel" [(ngModel)]="openInscriptionDate" name="openInscriptionDate" placeholder="{{ 'EVENTCREATION.OPENEVENTINSCRIPTDTPLHD' | translate }}" class="form-control input-md" required
@@ -149,24 +152,24 @@
                     </div>
                     <small class="text-danger" [hidden]="!openInscriptionDateV.invalid || !f.submitted" type="danger"> {{ "EVENTCREATION.OPENEVENTINSCRIPTDTERR" | translate }}</small>
                 </div>
-            </div>
+            </div>  -->
 
-            <!-- Text input-->
+            <!-- Text input 
             <div class="form-group row" [class.has-danger]="closeInscriptionDateV.invalid && f.submitted">
                 <label class="col-md-4 col-form-label" for="closeInscriptionDate">{{ "EVENTCREATION.CLOSEEVENTINSCRIPTDT" | translate }}</label>
                 <div class="col-md-6">
                     <div class="input-group">
                         <input id="closeInscriptionDate" style="float:none" #closeInscriptionDateV="ngModel" [(ngModel)]="closeInscriptionDate" name="closeInscriptionDate" placeholder="{{ 'EVENTCREATION.CLOSEEVENTINSCRIPTDTPLHD' | translate }}" class="form-control input-md"
                             required ngx-mydatepicker [options]="myOptions" #dp3="ngx-mydatepicker" (dateChanged)="onDateChanged($event)">
-                        <div class="input-group-btn">
+                        <span class="input-group-btn">
                             <button [class.butgrppat]="closeInscriptionDateV.invalid && f.submitted" type="button" class="btn btn-primary" (click)="dp3.toggleCalendar()">
                                <i class="fa fa-calendar" aria-hidden="true"></i>
                             </button>
-                        </div>
+                        </span>
                     </div>
                     <small class="text-danger" [hidden]="!closeInscriptionDateV.invalid || !f.submitted" type="danger"> {{ "EVENTCREATION.CLOSEEVENTINSCRIPTDTERR" | translate }}</small>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Textarea -->
             <div class="form-group row" [class.has-danger]="CommentsV.invalid  && f.submitted">

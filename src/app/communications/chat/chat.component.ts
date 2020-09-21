@@ -12,12 +12,12 @@ import { MembersService } from '../../services/members.service';
 })
 export class ChatComponent implements OnInit {
 
-  private items: FirebaseListObservable<any[]>;
-  private msgVal: string = '';
-  private user: Member;
+  public items: FirebaseListObservable<any[]>;
+  public msgVal: string = '';
+  public user: Member;
 
   constructor(public af: AngularFireDatabase,
-    private _memberService: MembersService) {
+    public _memberService: MembersService) {
     this.items = af.list('/globalMessages', {
       query: {
         limitToLast: 75,
